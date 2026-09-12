@@ -1,0 +1,38 @@
+record: 4910
+doi: 10.7483/OPENDATA.LHCB.N75T.TJPE
+portal_url: https://opendata.cern.ch/record/4910
+published_number_events: 734561
+observed_number_events: 735348
+event_count_note: >-
+  The ROOT-file total is 787 events larger than the published aggregate. The
+  difference exactly equals Dijet_qq_pt20_50_dw.root, suggesting that file was
+  omitted from the portal's aggregate event count.
+data_dir: data
+tree_name: DecayTreeTuple/tuple
+files:
+  - {name: Dijet_bb_pt10_15_dw.root, sample: bb, pt_bin_gev: [10, 15], polarity: down, size_bytes: 2339538, checksum: adler32:2aaf3a85}
+  - {name: Dijet_bb_pt10_15_up.root, sample: bb, pt_bin_gev: [10, 15], polarity: up, size_bytes: 2529917, checksum: adler32:95e2b135}
+  - {name: Dijet_bb_pt15_20_dw.root, sample: bb, pt_bin_gev: [15, 20], polarity: down, size_bytes: 54188494, checksum: adler32:62201215}
+  - {name: Dijet_bb_pt15_20_up.root, sample: bb, pt_bin_gev: [15, 20], polarity: up, size_bytes: 55854528, checksum: adler32:85b322ff}
+  - {name: Dijet_bb_pt20_50_dw.root, sample: bb, pt_bin_gev: [20, 50], polarity: down, size_bytes: 420677718, checksum: adler32:b87fc64f}
+  - {name: Dijet_bb_pt20_50_up.root, sample: bb, pt_bin_gev: [20, 50], polarity: up, size_bytes: 416112292, checksum: adler32:150d7681}
+  - {name: Dijet_bb_pt50_dw.root, sample: bb, pt_bin_gev: [50, null], polarity: down, size_bytes: 708308016, checksum: adler32:e0f658d0}
+  - {name: Dijet_bb_pt50_up.root, sample: bb, pt_bin_gev: [50, null], polarity: up, size_bytes: 752755208, checksum: adler32:0a8fb74f}
+  - {name: Dijet_cc_pt10_15_dw.root, sample: cc, pt_bin_gev: [10, 15], polarity: down, size_bytes: 984769, checksum: adler32:58dfb82c}
+  - {name: Dijet_cc_pt10_15_up.root, sample: cc, pt_bin_gev: [10, 15], polarity: up, size_bytes: 963033, checksum: adler32:f7d16f88}
+  - {name: Dijet_cc_pt15_20_dw.root, sample: cc, pt_bin_gev: [15, 20], polarity: down, size_bytes: 10914293, checksum: adler32:87ce7cfa}
+  - {name: Dijet_cc_pt15_20_up.root, sample: cc, pt_bin_gev: [15, 20], polarity: up, size_bytes: 10599918, checksum: adler32:802e0030}
+  - {name: Dijet_cc_pt20_50_dw.root, sample: cc, pt_bin_gev: [20, 50], polarity: down, size_bytes: 48623975, checksum: adler32:6a67b881}
+  - {name: Dijet_cc_pt20_50_up.root, sample: cc, pt_bin_gev: [20, 50], polarity: up, size_bytes: 47444522, checksum: adler32:c3e5a025}
+  - {name: Dijet_cc_pt50_dw.root, sample: cc, pt_bin_gev: [50, null], polarity: down, size_bytes: 89142131, checksum: adler32:92a6a38b}
+  - {name: Dijet_cc_pt50_up.root, sample: cc, pt_bin_gev: [50, null], polarity: up, size_bytes: 88824283, checksum: adler32:ab7fb3ce}
+  - {name: Dijet_qq_pt10_15_dw.root, sample: light, pt_bin_gev: [10, 15], polarity: down, size_bytes: 367520, checksum: adler32:aaead321}
+  - {name: Dijet_qq_pt10_15_up.root, sample: light, pt_bin_gev: [10, 15], polarity: up, size_bytes: 358640, checksum: adler32:74666984}
+  - {name: Dijet_qq_pt15_20_dw.root, sample: light, pt_bin_gev: [15, 20], polarity: down, size_bytes: 756048, checksum: adler32:ac74d752}
+  - {name: Dijet_qq_pt15_20_up.root, sample: light, pt_bin_gev: [15, 20], polarity: up, size_bytes: 688515, checksum: adler32:eb3e6d35}
+  - {name: Dijet_qq_pt20_50_dw.root, sample: light, pt_bin_gev: [20, 50], polarity: down, size_bytes: 3310798, checksum: adler32:c1470fce}
+  - {name: Dijet_qq_pt20_50_up.root, sample: light, pt_bin_gev: [20, 50], polarity: up, size_bytes: 3558272, checksum: adler32:966d888a}
+  - {name: Dijet_qq_pt50_dw.root, sample: light, pt_bin_gev: [50, null], polarity: down, size_bytes: 13522601, checksum: adler32:6329eac2}
+  - {name: Dijet_qq_pt50_up.root, sample: light, pt_bin_gev: [50, null], polarity: up, size_bytes: 14067231, checksum: adler32:624941fe}
+  - {name: Dijet_Z_dw.root, sample: z_bb, pt_bin_gev: null, polarity: down, size_bytes: 86369201, checksum: adler32:0164867f}
+  - {name: Dijet_Z_up.root, sample: z_bb, pt_bin_gev: null, polarity: up, size_bytes: 86288851, checksum: adler32:e07a6095}

@@ -1,0 +1,26 @@
+# Feature definitions and transformations are in python/features.py.
+seed: 2026
+data:
+  max_particles: 64
+  max_vertices: 64
+  max_candidates: 64
+  min_vertex_track_pt_mev: 250.0
+  min_vertex_track_ipchi2: 4.0
+  max_vertex_doca_mm: 0.25
+  min_vertex_flight_mm: 0.0
+  min_chain_pointing: 0.95
+  max_abs_state_z_mm: 500.0
+  shard_size: 4096
+  storage_dtype: float16
+split:
+  train: 0.65
+  validation: 0.15
+  test: 0.1
+  analysis: 0.1
+objectives:
+  masked_pid:
+    species_target: signed_reconstructed_id_v1
+    n_bins: 32
+model:
+  pid_num_classes: 12
+  pid_continuous_dim: 0

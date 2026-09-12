@@ -1,0 +1,154 @@
+# MC self-supervised training configuration.
+seed: 2026
+run_mode: missing_track_pretrain
+data:
+  cache_size: 1
+  max_particles: 64
+  max_vertices: 64
+  max_candidates: 64
+corruption:
+  seed: 2026
+  count_probabilities:
+  - 0.25
+  - 0.35
+  - 0.25
+  - 0.1
+  - 0.05
+  max_removed: 4
+  min_survivors: 1
+  views_per_jet: 1
+  types:
+  - complete
+  - random_charged
+  - random_neutral
+  - opposite_sign_pair
+  - angular_local_group
+  - tracks_from_displaced_vertex
+  - tracks_from_cascade
+  type_probabilities:
+    complete: 0.0
+    random_charged: 0.25
+    random_neutral: 0.1
+    opposite_sign_pair: 0.2
+    angular_local_group: 0.15
+    tracks_from_displaced_vertex: 0.18
+    tracks_from_cascade: 0.12
+  topology_mode: drop_all
+  sanitize_jet_width: true
+  resample_each_epoch: true
+  sanitized_global_names:
+  - jet_width
+  - vertices_truncated
+  - chains_truncated
+  missing_particle_feature_names:
+  - log_pt_fraction
+  - log_p_fraction
+  - delta_eta
+  - delta_phi
+  - signed_log_ip
+  - log1p_ipchi2
+  missing_topology_names:
+  - in_displaced_vertex
+  - in_cascade
+  - track_available
+model:
+  architecture: heterogeneous_particle_transformer
+  d_model: 96
+  n_heads: 8
+  n_layers: 5
+  dim_feedforward: 384
+  dropout: 0.1
+  use_polarity_conditioning: true
+  pid_num_classes: 12
+  pid_balanced_auxiliary: true
+  pid_natural_head_detach_encoder: true
+  pid_bin_counts:
+  - 32
+  - 32
+  - 32
+  - 32
+  - 32
+  - 32
+  - 32
+  - 32
+  - 32
+  pid_continuous_dim: 0
+  flavour_num_classes: 0
+  origin_num_classes: 0
+  vertex_num_classes: 0
+  candidate_num_classes: 0
+  topology_target_dim: 0
+  enable_semantic_token: true
+  enable_completeness_token: true
+  missing_track_max_queries: 4
+  missing_track_count_classes: 5
+  missing_track_count_balanced_auxiliary: false
+  missing_track_count_natural_head_detach_encoder: false
+  missing_track_particle_dim: 6
+  missing_track_pid_classes: 12
+  missing_track_charge_classes: 3
+  missing_track_summary_dim: 11
+  missing_track_corruption_classes: 7
+  missing_track_topology_dim: 3
+  missing_track_decoder_layers: 1
+  missing_track_pid_balanced_auxiliary: true
+  missing_track_pid_natural_head_enabled: false
+  missing_track_pid_natural_head_detach_encoder: true
+objectives:
+  masked_pid:
+    species_target: signed_reconstructed_id_v1
+    n_bins: 32
+  missing_track:
+    enabled: true
+    count_class_order:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+    removed_summary_names:
+    - log1p_removed_energy_over_residual_energy
+    - removed_pt_parallel_over_residual_pt
+    - removed_pt_perp_over_residual_pt
+    - removed_pz_over_residual_p
+    - log1p_removed_massless_mass_gev
+    - removed_charge_over_4
+    - removed_charged_count_over_4
+    - removed_neutral_count_over_4
+    - removed_displaced_count_over_4
+    - log1p_dropped_stored_vertex_tokens
+    - log1p_dropped_stored_cascade_tokens
+training:
+  batch_size_per_gpu: 128
+  gradient_accumulation: 1
+  workers: 4
+  epochs: 100
+  learning_rate: 0.0006
+  weight_decay: 0.01
+  warmup_fraction: 0.05
+  precision: auto
+  max_grad_norm: 1.0
+  early_stopping: true
+  early_stopping_patience: 12
+  min_delta: 0.0001
+  checkpoint_metric: missing_track_validation_nll
+  mask_fraction: 0.15
+  pid_species_balance:
+    source: signed_reconstructed_id
+    power: 1.0
+  missing_count_balance:
+    enabled: false
+    source: natural_frequency
+    power: 1.0
+    uncapped: true
+  loss_weights:
+    pid: 0.1
+    pid_species_balanced: 0.1
+    missing_count: 1.0
+    missing_set: 0.2
+    removed_summary: 0.15
+    missing_topology: 0.15
+    corruption_type: 0.05
+    missing_pid_balanced: 1.0
+  ddp:
+    find_unused_parameters: true
